@@ -130,7 +130,7 @@ describe('DELETE /todos/:id', () => {
                         expect(todo).toNotExist();
                         done();
                     }).catch((e) => done(e));
-            })
+            });
     });
 
     it('should return 404 if todo not found', (done) => {
@@ -176,6 +176,7 @@ describe('PATCH /todos/:id', () => {
                     }).catch((e) => done(e));
             });
     });
+
     it('should clear completedAt when todo is not completed', (done) => {
         var hexId = todos[1]._id.toHexString();
         var text = "updated second text";
