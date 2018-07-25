@@ -8,5 +8,14 @@
         "es6": true,
         "amd": true,
         "mocha": true
-    }
+    },
+    "overrides": [
+        {
+            "files": ["*.js"],
+            "rules": {
+                "no-unused-vars": ["error", { "argsIgnorePattern": "^ignore" }]
+            } 
+        }    
+    ]
+
 }
