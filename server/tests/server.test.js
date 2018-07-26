@@ -238,7 +238,7 @@ describe('POST /users', () => {
                     expect(user.password).toNotBe(password);
                     done();
                 }).catch((e) => done(e));
-            })
+            });
    });
 
    it('should return validation errors if request invalid', (done) => {
@@ -251,7 +251,7 @@ describe('POST /users', () => {
             .post('/users')
             .send(user)
             .expect(400)
-            .end(done)
+            .end(done);
    });
 
    it('should not create user if email in use', (done) => {
@@ -264,6 +264,6 @@ describe('POST /users', () => {
             .post('/users')
             .send(user)
             .expect(400)
-            .end(done)
+            .end(done);
    });
 });
