@@ -1,15 +1,15 @@
 // const {SHA256} = require('crypto-js');
 const jwt = require('jsonwebtoken');
-
+const Console = console;
 var data = {
     id: 10
 };
 
 var token = jwt.sign(data, '123abc');
-console.log(token);
+Console.log(token);
 
 var decoded = jwt.verify(token, '123abc');
-console.log('Decoded:',decoded);
+Console.log('Decoded:',decoded);
 // var message = 'I am number 9';
 // var hash = SHA256(message).toString();
 
