@@ -305,7 +305,20 @@ describe('POST /users/login', () => {
             .post('/users/login')
             .send({email, password})
             .expect(400)
-            .end(done);
+            .expect((res) => {
+                expect(res.headers['x-auth']).toNotExist();
+            })
+            .end((err, res) => {
+                if (err) {
+                    return done(err);
+                }
+
+                User.findById(users[1]._id)
+                .then((user) => {
+                    expect(user.tokens.length).toBe(0);
+                    done();
+                }).catch((e) => done(e));
+            });
         
     });
 });
