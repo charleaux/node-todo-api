@@ -298,7 +298,7 @@ describe('POST /users/login', () => {
     });
 
     it('should reject invalild login', (done) => {
-        var email = users[0].email;
+        var email = users[1].email;
         var password = 'badpassword';
 
         request(app)
@@ -312,9 +312,9 @@ describe('POST /users/login', () => {
                 if (err) {
                     return done(err);
                 }
-
                 User.findById(users[1]._id)
                 .then((user) => {
+                    expect(user.email).toBe(res.request._data.email);
                     expect(user.tokens.length).toBe(0);
                     done();
                 }).catch((e) => done(e));
